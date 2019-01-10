@@ -5,6 +5,9 @@
 <% if scope['chrony::pool_use'] -%>
 pool <%= scope['chrony::pool_address'] %> maxsources <%= scope['chrony::pool_maxservers'] %> <% if scope['chrony::pool_iburst'] %>iburst<% end %>
 <% else -%>
+<% if scope['chrony::preferred_server'] -%>
+server <%= scope['chrony::preferred_server'] -%> prefer iburst
+<% end -%>
 <% scope['chrony::servers'].each do |server| -%>
 server <%= server %> iburst
 <% end -%>
