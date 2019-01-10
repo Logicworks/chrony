@@ -41,6 +41,7 @@ class chrony (
   String $service_ensure,
   Boolean $service_manage,
   String $service_name,
+  String $preffered_server,
 ) {
   contain chrony::install
   contain chrony::config
